@@ -38,8 +38,10 @@ function Class(classDef, superClass) {
 	_Class.prototype.super = function(methodName) {
 		recursiveSuperClass = recursiveSuperClass.__super__;
 		var method = recursiveSuperClass.prototype[methodName];
-		var args = [].slice.call(arguments, 1);
-		return method.apply(this, args);
+		var ret = method.apply(this, [].slice.call(arguments, 1));
+		// reset
+		recursiveSuperClass = _Class;
+		return ret;
 	};
 
 	// define static methods
