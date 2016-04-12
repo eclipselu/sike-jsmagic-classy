@@ -1,12 +1,5 @@
 function extend(child, superClass) {
 	var parent = superClass || Object;
-	// copy static methods
-	for (var key in parent) {
-		if (Object.hasOwnProperty.call(parent, key)) {
-			child[key] = parent[key];
-		}
-	}
-
 	// setup prototype chain
 	child.prototype.__proto__ = parent.prototype;
 
